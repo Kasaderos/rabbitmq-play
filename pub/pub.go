@@ -48,6 +48,9 @@ func (s *RMQSender) Send(msg []byte) error {
 		false,
 		false,
 		amqp.Publishing{
+			Headers: amqp.Table{
+				"x-death-count": 5,
+			},
 			ContentType:  "application/json",
 			Body:         msg,
 			DeliveryMode: amqp.Persistent,

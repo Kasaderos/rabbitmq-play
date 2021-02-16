@@ -1,7 +1,6 @@
 package main
 
 import (
-
 	"github.com/streadway/amqp"
 )
 
@@ -73,6 +72,7 @@ func (r *RMQReceiver) connect() error {
 		false,
 		false,
 		amqp.Table{
+			"x-death-count":             2,
 			"x-queue-mode":              "lazy",
 			"x-dead-letter-exchange":    DeadExchange,
 			"x-dead-letter-routing-key": RoutingKey,
@@ -89,9 +89,7 @@ func (r *RMQReceiver) connect() error {
 		false,
 		false,
 		false,
-		amqp.Table{
-			"x-dead-letter-exchange": Exchange, // our default exchange
-		},
+		nil,
 	)
 	if err != nil {
 		channel.Close()

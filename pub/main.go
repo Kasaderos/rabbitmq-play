@@ -16,7 +16,7 @@ func main() {
 	defer pub.Close()
 
 	// case 1
-	ticker := time.NewTicker(time.Second * 2)
+	ticker := time.NewTicker(time.Second * 5)
 	for range ticker.C {
 		msg := uuid.New().String()
 		err := pub.Send([]byte(msg))
