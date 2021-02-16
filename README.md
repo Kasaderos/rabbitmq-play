@@ -17,7 +17,7 @@ Manage
 
 ```docker exec -it <container name> /bin/bash```
 
-Checkout master or another branch
+Checkout ```main``` or ```another``` branch
 
 
 
